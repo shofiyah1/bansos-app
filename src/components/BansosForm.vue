@@ -100,6 +100,14 @@
                     <p v-if="addressError" class="error-text">{{ addressError }}</p>
                 </div>
                 <div class="form-group">
+                    <label>RT:</label>
+                    <input v-model="formData.rt" type="number" required class="form-input" placeholder="Masukkan RT" />
+                </div>
+                <div class="form-group">
+                    <label>RW:</label>
+                    <input v-model="formData.rw" type="number" required class="form-input" placeholder="Masukkan RW" />
+                </div>
+                <div class="form-group">
                     <label>Penghasilan Sebelum Pandemi:</label>
                     <input v-model="formData.incomeBeforePandemic" type="number" required class="form-input"
                         placeholder="Masukkan penghasilan" />
@@ -133,8 +141,6 @@
                         ditemukan ketidaksesuaian.
                     </label>
                 </div>
-
-                <!-- Submit Button -->
                 <button type="submit" :disabled="!formData.isAgreed" class="btn-submit">
                     Submit
                 </button>
@@ -143,6 +149,9 @@
                 {{ message }}
             </p>
         </section>
+        <footer class="app-footer">
+            <p>&copy; 2024 Shofiyah</p>
+        </footer>
     </div>
 </template>
 
@@ -164,6 +173,8 @@ export default {
                 age: null,
                 gender: '',
                 address: '',
+                rt: null,  
+                rw: null,  
                 incomeBeforePandemic: null,
                 incomeAfterPandemic: null,
                 assistanceReason: '',
@@ -314,45 +325,55 @@ export default {
 </script>
 
 <style>
-/* Styles for the application */
-.error-text {
-    color: red;
-    font-size: 0.9em;
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
+    color: #2c3e50;
+    margin: 0;
+    padding: 0;
 }
 
 .app-container {
-    font-family: 'Arial', sans-serif;
-    background-color: #f1f4f9;
-    color: #2c3e50;
-    padding: 20px;
+    padding: 30px;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .app-header {
-    background-color: #3498db;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
     color: white;
     text-align: center;
-    padding: 30px 0;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 40px 0;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 870px;
 }
 
 .header-content h1 {
-    font-size: 36px;
+    font-size: 40px;
     margin: 0;
+    font-weight: bold;
 }
 
 .header-content p {
     font-size: 18px;
     margin-top: 10px;
+    opacity: 0.8;
 }
 
 .form-section {
     background-color: white;
-    padding: 20px;
+    padding: 30px;
     margin-top: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
 }
 
 .form-container {
@@ -368,22 +389,26 @@ export default {
 
 .form-group label {
     margin-bottom: 8px;
-    font-weight: bold;
+    font-weight: 500;
+    font-size: 16px;
+    color: #34495e;
 }
 
 .form-input,
 .form-select {
-    padding: 10px;
+    padding: 12px;
     font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
     outline: none;
-    transition: border-color 0.3s ease;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
 }
 
 .form-input:focus,
 .form-select:focus {
-    border-color: #3498db;
+    border-color: #6a11cb;
+    box-shadow: 0 0 8px rgba(106, 17, 203, 0.2);
 }
 
 .checkbox-group {
@@ -397,16 +422,17 @@ export default {
     grid-column: span 2;
     padding: 15px;
     font-size: 18px;
-    background-color: #3498db;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .btn-submit:hover {
-    background-color: #2980b9;
+    background: linear-gradient(45deg, #5f0fca, #1d66f9);
+    transform: translateY(-2px);
 }
 
 .btn-submit:disabled {
@@ -426,6 +452,17 @@ export default {
 
 .error {
     color: red;
+}
+
+.app-footer {
+    background: linear-gradient(45deg, #ffffff, #e6e6e6);
+    color: #2c3e50;
+    text-align: center;
+    padding: 15px 0;
+    border-radius: 15px;
+    width: 100%;
+    margin-top: 50px;
+    /* Memastikan footer tetap di bawah */
 }
 
 /* Responsive styles */

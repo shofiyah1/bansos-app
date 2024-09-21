@@ -24,6 +24,8 @@
                 <p><strong>Umur:</strong> {{ localData.age }}</p>
                 <p><strong>Jenis Kelamin:</strong> {{ localData.gender }}</p>
                 <p><strong>Alamat:</strong> {{ localData.address }}</p>
+                <p><strong>RT:</strong> {{ localData.rt }}</p>
+                <p><strong>RW:</strong> {{ localData.rw }}</p>
                 <p><strong>Penghasilan Sebelum Pandemi:</strong> {{ localData.incomeBeforePandemic }}</p>
                 <p><strong>Penghasilan Setelah Pandemi:</strong> {{ localData.incomeAfterPandemic }}</p>
                 <p><strong>Alasan Membutuhkan Bantuan:</strong>
@@ -54,6 +56,8 @@ export default {
                     age: params.get('age'),
                     gender: params.get('gender'),
                     address: params.get('address'),
+                    rt: params.get('rt'),
+                    rw: params.get('rw'),
                     incomeBeforePandemic: params.get('incomeBeforePandemic'),
                     incomeAfterPandemic: params.get('incomeAfterPandemic'),
                     assistanceReason: params.get('assistanceReason'),
@@ -81,10 +85,17 @@ export default {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    /* Kotak tidak terlalu besar */
+    margin: 0 auto;
+    /* Posisikan di tengah */
+    background: linear-gradient(135deg, #f0f9ff, #cfd9df);
+    /* Gradasi lembut */
 }
 
 .preview-header {
-    background-color: #3498db;
+    background: linear-gradient(135deg, #3498db, #9b59b6);
+    /* Gradasi header */
     color: white;
     padding: 20px;
     text-align: center;
@@ -93,40 +104,74 @@ export default {
 
 .preview-content {
     margin-top: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .data-section {
     margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .data-section h3 {
     margin-bottom: 10px;
-    color: #2980b9;
+    color: #3498db;
+    font-weight: bold;
+    text-align: center;
 }
 
 .image-container {
     margin-bottom: 15px;
+    text-align: center;
 }
 
 .preview-image {
-    width: 500px;
-    height: 250px;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
     object-fit: contain;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .btn-back {
-    background-color: #3498db;
+    background: linear-gradient(135deg, #3498db, #9b59b6);
+    /* Gradasi tombol */
     color: white;
-    padding: 10px 15px;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
 }
 
 .btn-back:hover {
-    background-color: #2980b9;
+    background: linear-gradient(135deg, #2980b9, #8e44ad);
+    /* Hover state dengan gradasi */
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+    .preview-container {
+        padding: 15px;
+    }
+
+    .preview-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .btn-back {
+        width: 100%;
+    }
 }
 </style>
